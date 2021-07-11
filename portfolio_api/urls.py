@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path(API_ROOT+'contact/', include('contact.urls')),
     path(API_ROOT+'experience/', include('experience.urls')),
+    path(API_ROOT+'education/', include('education.urls')),
 ]
