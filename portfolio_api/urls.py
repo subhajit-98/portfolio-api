@@ -21,4 +21,5 @@ API_ROOT = 'api/v1/'
 urlpatterns = [
     path('admin/', admin.site.urls),
     path(API_ROOT+'contact/', include('contact.urls')),
+    path(API_ROOT+'experience/', include('experience.urls')),
 ]
