@@ -15,8 +15,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.conf import settings
-from django.conf.urls.static import static
 
 API_ROOT = 'api/v1/'
 
@@ -25,4 +23,4 @@ urlpatterns = [
     path(API_ROOT+'contact/', include('contact.urls')),
     path(API_ROOT+'experience/', include('experience.urls')),
     path(API_ROOT+'education/', include('education.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
