@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'corsheaders',
     'about',
     'contact',
     'education',
@@ -55,6 +56,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'portfolio_api.urls'
@@ -136,3 +139,11 @@ MEDIA_ROOT  = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 MEDIA_BASE_URL = config('MEDIA_BASE_ROOT')
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+'''
+CORS_ORIGIN_WHITELIST = (
+  'http://localhost:8000',
+)
+'''
