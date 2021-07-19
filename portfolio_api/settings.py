@@ -28,7 +28,7 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', cast=bool)
 
 # ALLOWED_HOSTS = ['192.168.2.10',]
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [for s in v.split(',')])
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s for s in v.split(',')])
 
 
 # Application definition
