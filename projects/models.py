@@ -13,6 +13,7 @@ class project(models.Model):
     project_sort_desc = models.CharField(max_length=255)
     project_desc = models.TextField()
     project_link = models.CharField(max_length=150)
+    project_downlod_able = models.BooleanField(default=False)
     project_image = models.ImageField(unique=True, null=True, blank=True, upload_to=modify_upload_file_name)
 
     class Mata:
