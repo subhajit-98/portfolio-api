@@ -7,6 +7,11 @@ def modify_upload_file_name(instance, filename):
     filename = "project/"+instance.project_name.lower()+'.'+file_ext
     return filename
 
+def modify_project_files(instance, filename):
+    file_ext = filename.split('.')[-1]
+    filename = "project/project_file/"+instance.project_name.lower()+'.'+file_ext
+    return filename
+
 class project(models.Model):
     project_id = models.CharField(max_length=100, unique=True, null=True, blank=True)
     project_name = models.CharField(max_length=250)
@@ -15,6 +20,7 @@ class project(models.Model):
     project_link = models.CharField(max_length=150)
     project_downlod_able = models.BooleanField(default=False)
     project_image = models.ImageField(unique=True, null=True, blank=True, upload_to=modify_upload_file_name)
+    project_file = models.FileField(null=True, blank=True, upload_to=modify_project_files)
 
     class Mata:
         db_table = 'project'
