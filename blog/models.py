@@ -11,6 +11,7 @@ def modify_upload_file_name(instance, filename):
 class Blog(models.Model):
     blog_id = models.CharField(max_length=100, unique=True, null=True, blank=True)
     blog_title = models.CharField(max_length=255, null=False, blank=False)
+    blog_sort_desc = models.TextField()
     blog_image = models.ImageField(unique=True, null=True, blank=True, upload_to=modify_upload_file_name)
     blog_content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
