@@ -6,4 +6,9 @@ from .models import Blog
 class blogSerializer(serializers.ModelSerializer):
     class Meta:
         model = Blog
-        exclude = ('id',)
+        exclude = ('id', 'blog_content', )
+
+class singleBlogDetails(serializers.ModelSerializer):
+    class Meta:
+        model = Blog
+        exclude = ('id', 'blog_sort_desc', 'blog_sl_no', )
