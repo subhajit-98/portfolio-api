@@ -18,7 +18,8 @@ class blog_api(APIView):
             }
 
             for i in range(0, len(return_object["data"])):
-                return_object["data"][i]["blog_image"] = settings.MEDIA_BASE_URL+return_object["data"][i]["blog_image"]
+                if return_object["data"][i]["blog_image"] != '' and return_object["data"][i]["blog_image"] != None:
+                    return_object["data"][i]["blog_image"] = settings.MEDIA_BASE_URL+return_object["data"][i]["blog_image"]
 
             return_object['total_page_no'] = total_page
             return_object['current_page'] = page_no

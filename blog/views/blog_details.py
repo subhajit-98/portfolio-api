@@ -13,7 +13,8 @@ class blog_details(APIView):
                 "data": singleBlogDetails(get_all_data, many=True).data
             }
             for i in range(0, len(return_object["data"])):
-                return_object["data"][i]["blog_image"] = settings.MEDIA_BASE_URL+return_object["data"][i]["blog_image"]
+                if return_object["data"][i]["blog_image"] != '' and return_object["data"][i]["blog_image"] != None:
+                    return_object["data"][i]["blog_image"] = settings.MEDIA_BASE_URL+return_object["data"][i]["blog_image"]
             return Response(data=return_object, status=200)
         except Exception as e:
             print (e)
