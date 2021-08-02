@@ -45,3 +45,6 @@ def email_send_corn_job():
 # https://gutsytechster.wordpress.com/2019/06/24/how-to-setup-a-cron-job-in-django/
 # https://www.geeksforgeeks.org/how-to-setup-cron-jobs-in-ubuntu/
 # https://www.semicolonworld.com/question/59491/creating-a-mime-email-template-with-images-to-send-with-python-django (Buttom part)
+
+# https://www.youtube.com/watch?v=x0Epc_l3rsA
+# https://www.youtube.com/watch?v=oiLs29VBKP0
