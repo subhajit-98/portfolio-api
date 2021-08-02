@@ -17,3 +17,4 @@ def email_send_corn_job():
 
 # python manage.py shell --command="from email_queue.views import email_send; email_send()"
 # https://gutsytechster.wordpress.com/2019/06/24/how-to-setup-a-cron-job-in-django/
+# https://www.geeksforgeeks.org/how-to-setup-cron-jobs-in-ubuntu/
