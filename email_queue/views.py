@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from email_queue.models import EmailQueue
+from django.core.mail import EmailMessage
 
 # Create your views here.
 
@@ -20,5 +21,6 @@ def email_send_corn_job():
 
 
 # python manage.py shell --command="from email_queue.views import email_send; email_send()"
+# python manage.py shell --command="from email_queue.views import email_send_corn_job; email_send_corn_job()"
 # https://gutsytechster.wordpress.com/2019/06/24/how-to-setup-a-cron-job-in-django/
 # https://www.geeksforgeeks.org/how-to-setup-cron-jobs-in-ubuntu/
