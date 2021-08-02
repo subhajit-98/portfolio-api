@@ -134,6 +134,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT=os.path.join(BASE_DIR,'static/')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -160,6 +161,10 @@ EMAIL_HOST = config('SMTP_HOST')
 EMAIL_HOST_USER = config('SMTP_HOST_USER')
 EMAIL_HOST_PASSWORD = config('SMTP_HOST_PASSWORD')
 EMAIL_PORT = config('SMTP_PORT')
+
+CRONJOBS = [
+    ('*/4 * * * *', 'email_queue.views.email_send_corn_job'),
+]
 
 # CRONJOBS = [
 #     ('*/1 * * * *', 'email_queue.cron.test_cron'),
