@@ -4,8 +4,6 @@ from django.db.models.signals import post_save
 from contact.models import contact
 from django.dispatch import receiver
 
-from django.core.mail import EmailMessage
-
 EMAIL_FOR_CHOICE = [
     ("new_contact", "New contact"),
     ("new_post", "New Post"),
