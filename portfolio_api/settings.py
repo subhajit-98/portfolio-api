@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'experience',
     'projects',
     'blog',
+    'email_queue',
 ]
 
 MIDDLEWARE = [
@@ -150,3 +151,11 @@ CORS_ORIGIN_WHITELIST = (
   'http://localhost:8000',
 )
 '''
+
+# SMTP MAIL SET UP
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = config('SMTP_HOST')
+EMAIL_HOST_USER = config('SMTP_HOST_USER')
+EMAIL_HOST_PASSWORD = config('SMTP_HOST_PASSWORD')
+EMAIL_PORT = config('SMTP_PORT')
