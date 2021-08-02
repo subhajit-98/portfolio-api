@@ -22,6 +22,7 @@ class EmailQueue(models.Model):
     email_template = models.CharField(max_length=255)
     email_for = models.CharField(max_length=255, choices=EMAIL_FOR_CHOICE)
     email_status = models.CharField(max_length=255, choices=EMAIL_STATUS_CHOICE)
+    ref_id = models.CharField(max_length=255, default='', null=True, blank=True)
 
     class Meta:
         db_table = 'email_queue'
@@ -59,5 +60,6 @@ def send_welcome_mail(sender, instance, created, *args, **kwargs):
         send_new_mail.email_template = 'thankyou_contact'
         send_new_mail.email_for = "new_contact"
         send_new_mail.email_status = "0"
+        send_new_mail.ref_id = instance.contact_id
         send_new_mail.save()
         print ("send")

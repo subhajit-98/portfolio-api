@@ -2,14 +2,19 @@ from django.db import models
 from django.db.models import Max
 # from django.db.models.deletion import CASCADE
 
-# Create your models here.
+RESPONSE_STATUS_CHOICE = [
+    ("1", "Responsed"),
+    ("0", "Not Responsed")
+]
 
+# Create your models here.
 class contact(models.Model):
     contact_id = models.CharField(max_length=100, unique=True, null=True, blank=True)
     first_name = models.CharField(max_length=100, null=False, blank=False)
     last_name = models.CharField(max_length=100, null=False, blank=False)
     email_id = models.CharField(max_length=100, null=False, blank=False)
     message = models.TextField()
+    is_response = models.CharField(max_length=255, default="0", choices=RESPONSE_STATUS_CHOICE)
 
     class Meta:
         db_table = 'contact'
