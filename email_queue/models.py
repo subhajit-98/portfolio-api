@@ -4,8 +4,6 @@ from django.db.models.signals import post_save
 from contact.models import contact
 from django.dispatch import receiver
 
-from django.core.mail import EmailMessage
-
 EMAIL_FOR_CHOICE = [
     ("new_contact", "New contact"),
     ("new_post", "New Post"),
@@ -62,4 +60,3 @@ def send_welcome_mail(sender, instance, created, *args, **kwargs):
         send_new_mail.email_for = "new_contact"
         send_new_mail.email_status = "0"
         send_new_mail.save()
-        print ("send")

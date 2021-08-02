@@ -17,7 +17,7 @@ def email_send_corn_job():
                 update_email_queue.email_status = "1"
                 update_email_queue.save()
     except Exception as e:
-        print (e)
+        print ("Error on SMTP mail", e.message())
 
 
 # python manage.py shell --command="from email_queue.views import email_send; email_send()"
