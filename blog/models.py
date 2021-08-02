@@ -1,6 +1,11 @@
 from django.db import models
 from django.db.models import Max
 
+BLOG_POST_STATUS_CHOICE = [
+    ("0", "Draft"),
+    ("1", "Publish")
+]
+
 # Create your models here.
 
 def modify_upload_file_name(instance, filename):
@@ -16,6 +21,7 @@ class Blog(models.Model):
     blog_content = models.TextField()
     blog_sl_no = models.IntegerField(unique=True, null=False, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
+    publish_status = models.CharField(max_length=255, default="0", choices=BLOG_POST_STATUS_CHOICE)
 
     class Mata:
         db_table = 'blog'
