@@ -162,6 +162,10 @@ EMAIL_HOST_USER = config('SMTP_HOST_USER')
 EMAIL_HOST_PASSWORD = config('SMTP_HOST_PASSWORD')
 EMAIL_PORT = config('SMTP_PORT')
 
+CRONJOBS = [
+    ('*/4 * * * *', 'email_queue.views.email_send_corn_job'),
+]
+
 # CRONJOBS = [
 #     ('*/1 * * * *', 'email_queue.cron.test_cron'),
 #     ('*/1 * * * *', 'email_queue.views.email_send_corn_job', '>> /home/subhajit/Documents/file.log')
