@@ -12,7 +12,7 @@ class Blog(models.Model):
     blog_id = models.CharField(max_length=100, unique=True, null=True, blank=True)
     blog_title = models.CharField(max_length=255, null=False, blank=False)
     blog_sort_desc = models.TextField()
-    blog_image = models.ImageField(unique=True, null=True, blank=True, upload_to=modify_upload_file_name)
+    blog_image = models.ImageField(null=True, blank=True, upload_to=modify_upload_file_name)
     blog_content = models.TextField()
     blog_sl_no = models.IntegerField(unique=True, null=False, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
