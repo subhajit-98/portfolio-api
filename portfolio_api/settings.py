@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'experience',
     'projects',
     'blog',
+    'email_queue',
+    'django_crontab',
 ]
 
 MIDDLEWARE = [
@@ -151,3 +153,16 @@ CORS_ORIGIN_WHITELIST = (
   'http://localhost:8000',
 )
 '''
+
+# SMTP MAIL SET UP
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = config('SMTP_HOST')
+EMAIL_HOST_USER = config('SMTP_HOST_USER')
+EMAIL_HOST_PASSWORD = config('SMTP_HOST_PASSWORD')
+EMAIL_PORT = config('SMTP_PORT')
+
+# CRONJOBS = [
+#     ('*/1 * * * *', 'email_queue.cron.test_cron'),
+#     ('*/1 * * * *', 'email_queue.views.email_send_corn_job', '>> /home/subhajit/Documents/file.log')
+# ]
