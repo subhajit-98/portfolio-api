@@ -59,4 +59,5 @@ class contact_api(APIView):
             }
             return Response(data=return_object, status=401)
         except Exception as e:
-            print (e.message())
+            # print (e.message())
+            print (e)
