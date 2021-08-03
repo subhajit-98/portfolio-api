@@ -62,4 +62,4 @@ def send_welcome_mail(sender, instance, created, *args, **kwargs):
         send_new_mail.email_status = "0"
         send_new_mail.ref_id = instance.contact_id
         send_new_mail.save()
-        print ("send")
+        # print ("send")

@@ -10,34 +10,37 @@ import os
 # Create your views here.
 
 def email_send_corn_job():
-    email_queue = EmailQueue.objects.filter(email_status="0")
-    for email_id_list in email_queue:
-        if email_id_list.email_template == "thankyou_contact":
-            message_body = get_template('email_template/contact_email/contact.html').render({'websiteLink': 'http://www.techninetyeight.com/'})
-            img_dir = 'static'
-            image = 'happy.png'
-            file_path = os.path.join(img_dir, image)
-            img_data = open(file_path, 'rb').read()
-            html_part = MIMEMultipart(_subtype='related')
-            body = MIMEText(message_body, _subtype='html')
-            html_part.attach(body)
-            img = MIMEImage(img_data, 'png')
-            img.add_header('Content-Id', '<happy>')
-            img.add_header("Content-Disposition", "inline", filename="happy") 
-            html_part.attach(img)
-            msg = EmailMessage(email_id_list.email_subject, None, to=[email_id_list.email_to])
-            msg.attach(html_part)
-            resp = msg.send()
-        else:
-            message_body ="Test Body"
-            email = EmailMessage(email_id_list.email_subject, message_body, to=[email_id_list.email_to])
-            email.content_subtype = 'html'
-            resp = email.send()
+    try:
+        email_queue = EmailQueue.objects.filter(email_status="0")
+        for email_id_list in email_queue:
+            if email_id_list.email_template == "thankyou_contact":
+                message_body = get_template('email_template/contact_email/contact.html').render({'websiteLink': 'http://www.techninetyeight.com/'})
+                img_dir = 'static'
+                image = 'happy.png'
+                file_path = os.path.join(img_dir, image)
+                img_data = open(file_path, 'rb').read()
+                html_part = MIMEMultipart(_subtype='related')
+                body = MIMEText(message_body, _subtype='html')
+                html_part.attach(body)
+                img = MIMEImage(img_data, 'png')
+                img.add_header('Content-Id', '<happy>')
+                img.add_header("Content-Disposition", "inline", filename="happy") 
+                html_part.attach(img)
+                msg = EmailMessage(email_id_list.email_subject, None, to=[email_id_list.email_to])
+                msg.attach(html_part)
+                resp = msg.send()
+            else:
+                message_body ="Test Body"
+                email = EmailMessage(email_id_list.email_subject, message_body, to=[email_id_list.email_to])
+                email.content_subtype = 'html'
+                resp = email.send()
 
-        if resp == 1:
-            update_email_queue = EmailQueue.objects.get(id=email_id_list.id)
-            update_email_queue.email_status = "1"
-            update_email_queue.save()
+            if resp == 1:
+                update_email_queue = EmailQueue.objects.get(id=email_id_list.id)
+                update_email_queue.email_status = "1"
+                update_email_queue.save()
+    except Exception as e:
+        print ("Error on SMTP mail", e.message())
 
 
 # python manage.py shell --command="from email_queue.views import email_send; email_send()"
