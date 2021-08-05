@@ -36,10 +36,10 @@ def email_send_corn_job():
                 email.content_subtype = 'html'
                 resp = email.send()
 
-                if resp == 1:
-                    update_email_queue = EmailQueue.objects.get(id=email_id_list.id)
-                    update_email_queue.email_status = "1"
-                    update_email_queue.save()
+            if resp == 1:
+                update_email_queue = EmailQueue.objects.get(id=email_id_list.id)
+                update_email_queue.email_status = "1"
+                update_email_queue.save()
     except Exception as e:
         print ("Error on SMTP mail", e.message())
 
